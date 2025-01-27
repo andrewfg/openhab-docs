@@ -531,8 +531,9 @@ Group:DateTime:LATEST         LastSeen     "Last Seen [%1$tY.%1$tm.%1$tY %1$tH:%
 Group:Number:COUNT("OFFLINE") OfflineDevices "Offline Devices [%d]"     // e.g. "2"
 ```
 
-The first four examples above compute the number of active lights and store them as group state.
-However, the second group is of type switch and has an aggregation function of `OR`.
+The first four examples above compute over the active lights in the group.
+The first example simply calculates the number of lights in the Group that are `ON`.
+The second example if for a Group of type Switch and has an aggregation function of `OR`.
 This means that the state of the group will be `ON` as soon as any of the member lights are turned on.
 The third uses `AND` and sets the Group state to `ON` if all of its members have the state `ON`, `OFF` if any of the Group members has a different state than `ON`.
 The fourth uses `XOR` where the Group state is only `ON`, if exactly one light is `ON`.
@@ -542,6 +543,8 @@ Sending a command to a Group causes the command to be sent to all Group members.
 An example of this is shown by the second group above; sending a single `ON` or `OFF` command to that group turns all lights in the group on or off.
 
 The fifth example computes the average temperature of all room temperature Items in the group.
+The calculation converts all values to the Unit of the Group Item.
+So if the Item has the Unit `CELSIUS` then all member Item values are converted to `CELSIUS` before the calculation is done.
 
 Assuming we have a Group containing three timestamps: `now().minusDays(10)`, `now()` and `now().plusSeconds(30)`.
 The `EARLIEST` function returns `now().minusDays(10)`, the `LATEST` function returns `now().plusSeconds(30)`.
