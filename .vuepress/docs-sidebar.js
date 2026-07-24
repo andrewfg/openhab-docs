@@ -76,7 +76,14 @@ module.exports = [
       'concepts/discovery',
       'concepts/audio',
       'concepts/units-of-measurement',
-      'concepts/rules',
+      { title: 'Rules',
+        path: '/docs/concepts/rules',
+        children: [
+          ['concepts/standard-triggers', 'Standard Triggers'],
+          ['concepts/standard-conditions', 'Standard Conditions'],
+          ['concepts/standard-actions', 'Standard Actions']
+        ]
+      }
     ]
   },
   {
@@ -116,6 +123,8 @@ module.exports = [
               ['configuration/yaml/things', 'Things'],
               ['configuration/yaml/items', 'Items'],
               ['configuration/yaml/tags', 'Tags'],
+              ['configuration/yaml/rules', 'Rules'],
+              ['configuration/yaml/ruletemplates', 'Rule Templates'],
               ['configuration/yaml/pages', 'Pages'],
               ['configuration/yaml/widgets', 'Widgets'],
             ]
@@ -138,6 +147,7 @@ module.exports = [
     collapsable: false,
     children: [
       ['mainui/', 'Overview'],
+      ['mainui/chat', 'Chat'],
       { title: 'Settings',
         path: '/docs/mainui/settings/',
         children: [
@@ -158,7 +168,8 @@ module.exports = [
         path: '/docs/mainui/developer/',
         children: [
           ['mainui/developer/sidebar', 'Developer Sidebar'],
-          ['mainui/developer/widgets', 'Widgets']
+          ['mainui/developer/widgets', 'Widgets'],
+          ['mainui/developer/log-viewer', 'Log Viewer']
         ]
       },
       ['mainui/about', 'Help & About'],
@@ -210,7 +221,6 @@ module.exports = [
       ['ecosystem/alexa/', 'Amazon Alexa'],
       ['ecosystem/google-assistant/', 'Google Assistant'],
       ['../addons/integrations/homekit/', 'Apple HomeKit'],
-      // ['ecosystem/ifttt/', 'IFTTT'], // Temporary remove until service gets reactivated
       ['../addons/integrations/openhabcloud/', 'openHAB Cloud'],
     ]
   },
